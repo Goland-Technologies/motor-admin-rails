@@ -45,7 +45,7 @@ img {
 .ivu-menu-submenu-title:hover, .ivu-menu-item:hover, .ivu-menu-item-active {
   img {
     transition: all 0.2s ease-in-out;
-    filter: invert(50%) sepia(95%) saturate(357%) hue-rotate(166deg) brightness(85%) contrast(89%);
+    filter: invert(16%) sepia(100%) saturate(2361%) hue-rotate(150deg) brightness(200%) contrast(100%)
   }
 }
 </style>

@@ -201,6 +201,19 @@ Start example application in development mode:
 MOTOR_DEVELOPMENT=true rails s
 ```
 
+## UI Customization
+To customize the UI, you can override the following files in your application:
+
+Colors: `ui/src/utils/styles/variables.scss`
+
+Logo line 12 under comment Logo: `ui/src/navigation/components/header.vue` 
+
+Search, Add , and settings change variable `isShowSettings` in `ui/src/settings/scripts/toggle.js` 
+
+Svg Icons Color change set with `filter` in `ui/src/utils/components/custom_icon.vue` in css class `.ivu-menu-submenu-title:hover, .ivu-menu-item:hover, .ivu-menu-item-active`
+
+Setting also need to change permission in `ui/src/utils/scripts/cancan.js` commented deafult and added hard false
+
 ## License
 
 Motor Admin is licensed under the AGPL v3 license.

@@ -5,28 +5,11 @@
         :to="{ name: 'home' }"
         type="primary"
         class="d-flex align-items-center justify-content-center"
-        :style="{ width: '44px', height: '42px' }"
+        :style="{ height: '80%' }"
       >
         <div class="d-flex align-items-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-bolt"
-            width="26"
-            height="26"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            stroke="currentColor"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path
-              stroke="none"
-              d="M0 0h26v26H0z"
-              fill="none"
-            />
-            <polyline points="13 3 13 10 19 10 11 21 11 14 5 14 13 3" />
-          </svg>
+          <!-- logo -->
+          <img src="https://user-images.githubusercontent.com/31547587/234342964-251a2ec5-6929-488f-bc4a-18815e6f3f79.png" class="logo">
         </div>
       </VButton>
       <template v-if="!widthLessThan('sm')">
@@ -37,7 +20,7 @@
           class="header-btn ms-2"
           size="large"
         >
-          {{ reportsLink.name }}
+          {{ reportsLink.name }} 
         </VButton>
         <VButton
           v-if="$can('read', 'Motor::Form') && formsLink"
@@ -47,17 +30,6 @@
           :to="{ name: 'forms' }"
         >
           {{ formsLink.name }}
-        </VButton>
-        <VButton
-          v-for="link in linksToRender"
-          :key="link.name"
-          type="primary"
-          class="header-btn ms-2"
-          :target="link.target"
-          size="large"
-          :to="link.to"
-        >
-          {{ link.name }}
         </VButton>
         <VButton
           v-if="$can('manage', 'Motor::Config')"
@@ -128,18 +100,7 @@
       >
         Log In
       </VButton>
-      <VButton
-        v-if="!isShowSettings && currentUser.showHelp"
-        type="primary"
-        size="large"
-        class="header-btn"
-        @click="openGuides"
-      >
-        <Icon
-          type="md-help"
-          size="large"
-        />
-      </VButton>
+      
       <VButton
         v-if="!isShowSettings && adminSettingsPath && $can('manage', 'all')"
         type="primary"
@@ -170,6 +131,7 @@
           />
         </VButton>
       </Badge>
+      <!-- search -->
       <VButton
         v-if="!isShowSettings"
         type="primary"
@@ -182,6 +144,7 @@
           size="large"
         />
       </VButton>
+      <!-- Add -->
       <Dropdown
         v-if="!isShowSettings && isShowCreateButton"
         trigger="click"
@@ -227,6 +190,7 @@
           </DropdownMenu>
         </template>
       </Dropdown>
+      <!-- Settings -->
       <VButton
         v-if="$can('manage', 'all')"
         type="primary"
@@ -422,6 +386,10 @@ export default {
 :deep(.ivu-badge-count) {
   top: 0
 }
+
+.logo {
+  height: 45px;
+  }
 
 .header-btn {
   font-size: 15px;
