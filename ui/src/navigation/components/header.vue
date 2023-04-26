@@ -9,7 +9,10 @@
       >
         <div class="d-flex align-items-center">
           <!-- logo -->
-          <img src="https://user-images.githubusercontent.com/31547587/234342964-251a2ec5-6929-488f-bc4a-18815e6f3f79.png" class="logo">
+          <img
+            src="https://user-images.githubusercontent.com/31547587/234342964-251a2ec5-6929-488f-bc4a-18815e6f3f79.png"
+            class="logo"
+          >
         </div>
       </VButton>
       <template v-if="!widthLessThan('sm')">
@@ -20,7 +23,7 @@
           class="header-btn ms-2"
           size="large"
         >
-          {{ reportsLink.name }} 
+          {{ reportsLink.name }}
         </VButton>
         <VButton
           v-if="$can('read', 'Motor::Form') && formsLink"
@@ -100,7 +103,6 @@
       >
         Log In
       </VButton>
-      
       <VButton
         v-if="!isShowSettings && adminSettingsPath && $can('manage', 'all')"
         type="primary"
