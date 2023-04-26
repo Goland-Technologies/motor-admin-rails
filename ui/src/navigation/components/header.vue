@@ -390,7 +390,7 @@ export default {
 }
 
 .logo {
-  height: 45px;
+  height: 35px;
   }
 
 .header-btn {
