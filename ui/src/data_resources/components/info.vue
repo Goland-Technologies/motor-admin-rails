@@ -219,7 +219,7 @@ export default {
       const primaryKeyValue = this.resource[this.model.primary_key]
       const isNumber = primaryKeyValue?.toString()?.match(/^\d+$/)
 
-      return `${singularize(this.model.display_name)}${isNumber ? ' #' : ': '}${primaryKeyValue}`
+      //return `${singularize(this.model.display_name)}${isNumber ? ' #' : ': '}${primaryKeyValue}`
     },
     displayColumn () {
       return this.model.columns.find((column) => column.name === this.model.display_column)
@@ -303,7 +303,7 @@ export default {
       this.$emit('update', data)
     },
     assignBreadcrumbLabel () {
-      const labelParts = this.model.display_primary_key ? [`${this.resourceId.toString().match(/^\d+$/) ? '#' : ''}${this.resourceId}`] : []
+      const labelParts = this.model.display_primary_key ? [] : []
 
       if (this.model.display_column && this.resource[this.model.display_column] && this.resourceId.toString() !== this.resource[this.model.display_column].toString()) {
         labelParts.push(`${this.resource[this.model.display_column]}`)

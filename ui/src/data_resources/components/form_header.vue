@@ -97,7 +97,7 @@ export default {
     },
     resourceTitle () {
       if (this.model.primary_key in this.resource) {
-        return `${singularize(this.model.display_name)} #${this.resource[this.model.primary_key]}`
+        return `${singularize(this.model.display_name)}`
       } else {
         return singularize(this.model.display_name)
       }

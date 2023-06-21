@@ -6,5 +6,6 @@
   "engines": {
     "yarn": "1.x",
     "node": "14.x"
-  }
+  },
+  "dependencies": {}
 }

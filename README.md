@@ -214,6 +214,8 @@ Svg Icons Color change set with `filter` in `ui/src/utils/components/custom_icon
 
 Setting also need to change permission in `ui/src/utils/scripts/cancan.js` commented deafult and added hard false
 
+## Build changes
+Run `yarn run build:prod`
 ## License
 
 Motor Admin is licensed under the AGPL v3 license.

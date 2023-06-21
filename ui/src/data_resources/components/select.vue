@@ -222,7 +222,7 @@ export default {
 
       if (this.valueKey === 'id') {
         if (displayValue) {
-          return truncate(`#${option[this.valueKey]} ${displayValue}`, 200)
+          return truncate(`${displayValue}`, 200)
         } else {
           return `#${option[this.valueKey]}`
         }
