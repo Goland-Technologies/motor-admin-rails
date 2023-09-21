@@ -5,7 +5,7 @@ module Motor
     include Motor::CurrentUserMethod
     include Motor::CurrentAbility
 
-    before_action :skip_bullet
+    before_action :skip_bullet, unless: -> { Rails.env == "production" }
 
     def skip_bullet
       Bullet.enable = false
