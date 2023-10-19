@@ -5,7 +5,7 @@ module Motor
     include Motor::CurrentUserMethod
     include Motor::CurrentAbility
 
-    before_action :skip_bullet, unless: -> { Rails.env == "production" }
+    before_action :skip_bullet, unless: -> {  Rails.env.in?(%w(production  staging)) }
     before_action :set_title
 
     def skip_bullet
