@@ -78,7 +78,7 @@
                 class="p-0 bg-transparent text-dark"
                 style="line-height: unset; height: unset"
               >
-                {{ link.name }}
+                {{ i18n[link.name] || link.name }}
               </VButton>
             </DropdownItem>
             <DropdownItem

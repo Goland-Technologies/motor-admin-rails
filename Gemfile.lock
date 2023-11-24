@@ -197,6 +197,12 @@ GEM
     nokogiri (1.13.10)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
+    nokogiri (1.13.10-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.10-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.10-x86_64-linux)
+      racc (~> 1.4)
     oj (3.13.23)
     orm_adapter (0.5.0)
     parallel (1.22.1)
@@ -298,6 +304,9 @@ GEM
     simplecov_json_formatter (0.1.4)
     sqlite3 (1.5.4)
       mini_portile2 (~> 2.8.0)
+    sqlite3 (1.5.4-arm64-darwin)
+    sqlite3 (1.5.4-x86_64-darwin)
+    sqlite3 (1.5.4-x86_64-linux)
     thor (1.2.1)
     timeout (0.3.1)
     tiny_tds (2.1.5)
@@ -323,6 +332,7 @@ GEM
 PLATFORMS
   arm64-darwin-21
   arm64-darwin-22
+  ruby
   x86_64-darwin-20
   x86_64-linux
 
