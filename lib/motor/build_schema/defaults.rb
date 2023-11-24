@@ -43,7 +43,8 @@ module Motor
             tab_type: BuildSchema::DEFAULT_TYPE,
             preferences: {},
             visible: true
-          },
+          }
+=begin
           {
             name: 'audits',
             display_name: I18n.t('motor.audits'),
@@ -58,6 +59,7 @@ module Motor
             preferences: {},
             visible: true
           }
+=end
         ].freeze
       end
       # rubocop:enable Metrics/MethodLength

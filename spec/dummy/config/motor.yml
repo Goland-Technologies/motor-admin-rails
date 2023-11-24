@@ -1,6 +1,6 @@
 ---
 engine_version: 0.4.14
-file_version: 2023-11-24 06:05:29.356450000 Z
+file_version: 2023-11-24 07:08:36.189365000 Z
 resources:
 - name: country
   preferences:
@@ -152,7 +152,7 @@ resources:
       virtual: true
       format:
         link_text: "\U0001F4CD Map"
-  updated_at: 2021-12-04 10:25:38.026092000 +00:00
+  updated_at: 2023-11-24 07:08:36.117253000 +00:00
 - name: order_note
   preferences:
     display_name: Notes
@@ -209,17 +209,7 @@ configs:
     link_type: forms
   - name: Sales Dashboard
     path: "/dashboards/1"
-  - conditions: []
-    type: header
-    name: users
-    path: "/data/users"
-    link_type: user_dropdown
-  - conditions: []
-    type: header
-    name: Users
-    path: "/data/users"
-    link_type: user_dropdown
-  updated_at: 2023-11-24 06:05:29.356450000 +00:00
+  updated_at: 2023-11-24 07:04:35.888677000 +00:00
 - key: resources.active_storage/attachment.columns.order
   value:
   - id
@@ -286,9 +276,9 @@ configs:
   - create
   - edit
   - remove
-  - mark_as_shipped
   - cancel
-  updated_at: 2021-05-20 13:33:38.049831000 +00:00
+  - mark_as_shipped
+  updated_at: 2023-11-24 07:08:36.189365000 +00:00
 - key: resources.order.columns.order
   value:
   - id

@@ -9,7 +9,7 @@
       :size="buttonSize"
       @click="applyAction(action)"
     >
-      {{ action.display_name }}
+      {{ i18n[action.display_name] || action.display_name }}
     </VButton>
   </template>
   <Dropdown
