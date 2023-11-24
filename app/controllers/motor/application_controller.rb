@@ -7,6 +7,7 @@ module Motor
 
     before_action :skip_bullet, unless: -> {  Rails.env.in?(%w(production  staging)) }
     before_action :set_title
+    before_action :set_locale
 
     def skip_bullet
       Bullet.enable = false
@@ -20,6 +21,11 @@ module Motor
       else
         @title = "GoPanel - #{current_user.role.titleize}"
       end
+    end
+
+    def set_locale
+      locale = session[:locale] || I18n.available_locales.first
+      I18n.locale = locale
     end
   end
 end
