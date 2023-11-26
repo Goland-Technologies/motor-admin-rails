@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_18_093032) do
-
+ActiveRecord::Schema[7.0].define(version: 2023_11_26_183040) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,8 +19,8 @@ ActiveRecord::Schema.define(version: 2021_11_18_093032) do
     t.text "body"
     t.string "record_type", null: false
     t.bigint "record_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
   end
 
@@ -40,9 +39,7 @@ ActiveRecord::Schema.define(version: 2021_11_18_093032) do
     t.string "filename", null: false
     t.string "content_type"
     t.text "metadata"
-    if Rails::VERSION::MAJOR >= 7 || (Rails::VERSION::MAJOR == 6 && Rails::VERSION::MINOR >= 1)
-      t.string "service_name", null: false
-    end
+    t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum", null: false
     t.datetime "created_at", null: false
@@ -110,6 +107,18 @@ ActiveRecord::Schema.define(version: 2021_11_18_093032) do
     t.index ["query_id"], name: "index_motor_alerts_on_query_id"
   end
 
+  create_table "motor_api_configs", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "url", null: false
+    t.text "preferences", null: false
+    t.text "credentials", null: false
+    t.text "description"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "motor_api_configs_name_unique_index", unique: true, where: "(deleted_at IS NULL)"
+  end
+
   create_table "motor_audits", force: :cascade do |t|
     t.bigint "auditable_id"
     t.string "auditable_type"
@@ -147,8 +156,8 @@ ActiveRecord::Schema.define(version: 2021_11_18_093032) do
     t.bigint "author_id"
     t.string "author_type"
     t.datetime "deleted_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["title"], name: "motor_dashboards_title_unique_index", unique: true, where: "(deleted_at IS NULL)"
   end
 
@@ -163,6 +172,7 @@ ActiveRecord::Schema.define(version: 2021_11_18_093032) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "api_config_name", null: false
     t.index ["name"], name: "motor_forms_name_unique_index", unique: true, where: "(deleted_at IS NULL)"
     t.index ["updated_at"], name: "index_motor_forms_on_updated_at"
   end
@@ -176,8 +186,8 @@ ActiveRecord::Schema.define(version: 2021_11_18_093032) do
 
   create_table "motor_note_tags", force: :cascade do |t|
     t.string "name", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["name"], name: "motor_note_tags_name_unique_index", unique: true
   end
 
@@ -188,52 +198,9 @@ ActiveRecord::Schema.define(version: 2021_11_18_093032) do
     t.bigint "record_id", null: false
     t.string "record_type", null: false
     t.datetime "deleted_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["author_id", "author_type"], name: "motor_notes_author_id_author_type_index"
-  end
-
-  create_table 'motor_forms', force: :cascade do |t|
-    t.string 'name', null: false
-    t.text 'description'
-    t.text 'api_path', null: false
-    t.text 'http_method', null: false
-    t.text 'preferences', null: false
-    t.bigint 'author_id'
-    t.string 'author_type'
-    t.datetime 'deleted_at'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.string 'api_config_name', null: false
-    t.index 'name', name: 'motor_forms_name_unique_index', unique: true,
-                    where: '(deleted_at IS NULL)'
-    t.index ['updated_at'], name: 'index_motor_forms_on_updated_at'
-  end
-
-  create_table 'motor_api_configs', force: :cascade do |t|
-    t.string 'name', null: false
-    t.string 'url', null: false
-    t.text 'preferences', null: false
-    t.text 'credentials', null: false
-    t.text 'description'
-    t.datetime 'deleted_at', precision: 6
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
-    t.index ['name'], name: 'motor_api_configs_name_unique_index', unique: true, where: '(deleted_at IS NULL)'
-  end
-
-  create_table 'motor_queries', force: :cascade do |t|
-    t.string 'name', null: false
-    t.text 'description'
-    t.text 'sql_body', null: false
-    t.text 'preferences', null: false
-    t.bigint 'author_id'
-    t.string 'author_type'
-    t.datetime 'deleted_at'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
-    t.index 'name', name: 'motor_queries_name_unique_index', unique: true,
-                    where: '(deleted_at IS NULL)'
   end
 
   create_table "motor_notifications", force: :cascade do |t|
@@ -244,8 +211,8 @@ ActiveRecord::Schema.define(version: 2021_11_18_093032) do
     t.bigint "record_id"
     t.string "record_type"
     t.string "status", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["recipient_id", "recipient_type"], name: "motor_notifications_recipient_id_recipient_type_index"
     t.index ["record_id", "record_type"], name: "motor_notifications_record_id_record_type_index"
   end
@@ -258,8 +225,8 @@ ActiveRecord::Schema.define(version: 2021_11_18_093032) do
     t.bigint "author_id"
     t.string "author_type"
     t.datetime "deleted_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["name"], name: "motor_queries_name_unique_index", unique: true, where: "(deleted_at IS NULL)"
   end
 
@@ -271,8 +238,8 @@ ActiveRecord::Schema.define(version: 2021_11_18_093032) do
     t.bigint "record_id"
     t.string "record_type"
     t.datetime "scheduled_at", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["author_id", "author_type"], name: "motor_reminders_author_id_author_type_index"
     t.index ["recipient_id", "recipient_type"], name: "motor_reminders_recipient_id_recipient_type_index"
     t.index ["record_id", "record_type"], name: "motor_reminders_record_id_record_type_index"
@@ -297,8 +264,8 @@ ActiveRecord::Schema.define(version: 2021_11_18_093032) do
 
   create_table "motor_tags", force: :cascade do |t|
     t.string "name", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["name"], name: "motor_tags_name_unique_index", unique: true
   end
 
@@ -346,6 +313,8 @@ ActiveRecord::Schema.define(version: 2021_11_18_093032) do
     t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "goland_role"
+    t.string "string"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

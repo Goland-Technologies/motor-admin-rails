@@ -16,10 +16,12 @@ module Motor
     private
 
     def set_title
-      if !(current_user.super_admin? || current_user.admin?)
+      if current_user.business && !(current_user.super_admin? || current_user.admin?)
         @title = "GoPanel - #{current_user.business.name}"
+      elsif current_user.super_admin? || current_user.admin?
+        @title = "GoPanel - #{current_user.goland_role.titleize}"
       else
-        @title = "GoPanel - #{current_user.role.titleize}"
+        @title = "GoPanel"
       end
     end
 
