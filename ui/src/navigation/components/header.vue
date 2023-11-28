@@ -10,7 +10,7 @@
         <div class="d-flex align-items-center">
           <!-- logo -->
           <img
-            src="https://user-images.githubusercontent.com/31547587/234342964-251a2ec5-6929-488f-bc4a-18815e6f3f79.png"
+            src="https://i.ibb.co/s3Hk5Qt/goland-icon-white.png"
             class="logo"
           >
         </div>
